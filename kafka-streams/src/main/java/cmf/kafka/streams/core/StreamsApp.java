@@ -94,7 +94,7 @@ public class StreamsApp {
                 .groupByKey()
                 .count()
                 .toStream()
-                .map((key, value) -> KeyValue.pair(value.toString(), key))
+                .map((key, value) -> KeyValue.pair(key, value.toString()))
                 .to(targetTopic);
 
     }

@@ -16,7 +16,7 @@ public class KafkaTopicConfiguration {
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-    @Value(value ="${message.topic.sales.name}")
+    @Value(value = "${message.topic.sales.name}")
     private String topicName;
 
     @Bean
@@ -26,6 +26,13 @@ public class KafkaTopicConfiguration {
         return new KafkaAdmin(configs);
     }
 
+    /**
+     * This bean is to create a topic on startup.
+     * <p>
+     * If the topic already exists, the bean is ignored.
+     *
+     * @return new topic
+     */
     @Bean
     public NewTopic saleTopic() {
         return new NewTopic(topicName, 3, (short) 1);

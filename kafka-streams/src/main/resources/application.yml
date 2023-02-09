@@ -1,0 +1,17 @@
+server:
+  port: 8083
+
+spring:
+    kafka:
+        client-id: cmf-kafka-streams
+        bootstrap-servers:
+            - localhost:9092
+        template:
+            default-topic: sales
+
+kafka:
+    topic:
+        input: sales
+        brand-counter: brandCounterTopic
+        model-counter: modelCounterTopic
+        total-sales-amount: totalSalesAmountTopic
